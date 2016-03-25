@@ -8,9 +8,14 @@ Depends:
 Imports:
   GGally (>= 1.0.1),
   ggplot2 (>= 2.0.0),
+  gtable,
+  grid,
   RColorBrewer,
   stats
 License: GPL (>= 2.0)
 LazyData: true
 RoxygenNote: 5.0.1
-Suggests: testthat
+Suggests: testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
