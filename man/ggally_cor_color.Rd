@@ -44,7 +44,8 @@ require(GGally)
 ggpairs(iris, 1:4, upper = list(continuous = ggally_cor_color))
 # use kendall correlation, only three color groups and reverse the pallete
 ggpairs(
-  iris, 1:4,
+  iris, 1:3,
+  lower = "blank",
   upper = list(
     continuous = wrap(
       ggally_cor_color,
@@ -56,7 +57,8 @@ ggpairs(
 )
 # use kendall correlation, only three color groups but breaking at abs(0.2)
 ggpairs(
-  iris, 1:4,
+  iris, 1:3,
+  lower = "blank",
   upper = list(
     continuous = wrap(
       ggally_cor_color,
