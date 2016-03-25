@@ -8,7 +8,7 @@
 #' @param mapping aesthetics being used. Must contain 'x' and 'y'. 'color' will be ignored
 #' @param color color of main text. Default = "black"
 #' @param size ggplot2 size of main text. Default = 6
-#' @param pallete should be a character string that matches a RColorBrewer color pallete
+#' @param palette should be a character string that matches a RColorBrewer color palette
 #' @param breaks can be a vector of breaks points between -1 and 1.  If a single numeric number, will set breaks with that many groups
 #' @param ... other arguments being supplied to ggally_text
 #' @param method \code{method} suppied to cor function
@@ -20,41 +20,41 @@
 #' @export
 #' @keywords hplot
 #' @examples
-#' ggally_cor_color(iris, ggplot2::aes(x = Sepal.Length, y = Petal.Width))
-#' ggally_cor_color(
+#' color_cor(iris, ggplot2::aes(x = Sepal.Length, y = Petal.Width))
+#' color_cor(
 #'   iris,
 #'   ggplot2::aes(x = Sepal.Length, y = -1 * Petal.Width),
 #'   method = "spearman"
 #' )
 #'
 #' require(GGally)
-#' ggpairs(iris, 1:4, upper = list(continuous = ggally_cor_color))
-#' # use kendall correlation, only three color groups and reverse the pallete
+#' ggpairs(iris, 1:4, upper = list(continuous = color_cor))
+#' # use kendall correlation, only three color groups and reverse the palette
 #' ggpairs(
 #'   iris, 1:3,
 #'   lower = "blank",
 #'   upper = list(
 #'     continuous = wrap(
-#'       ggally_cor_color,
+#'       color_cor,
 #'       method = "kendall",
 #'       breaks = 3,
 #'       reversePalette = TRUE
 #'     )
 #'   )
 #' )
-#' # use kendall correlation, only three color groups but breaking at abs(0.2)
+#' # use spearman correlation, only three color groups but breaking at abs(0.2)
 #' ggpairs(
 #'   iris, 1:3,
 #'   lower = "blank",
 #'   upper = list(
 #'     continuous = wrap(
-#'       ggally_cor_color,
+#'       color_cor,
 #'       method = "spearman",
 #'       breaks = c(-0.20, 0.20)
 #'     )
 #'   )
 #' )
-ggally_cor_color <- function(data, mapping, color = I("black"), size = 6, pallete = "RdYlGn", breaks = c(-0.99, -0.8, -0.6, 0.6, 0.8, 0.99), ..., use = "everything", method = "pearson", reversePalette = FALSE) {
+color_cor <- function(data, mapping, color = I("black"), size = 6, palette = "RdYlGn", breaks = c(-0.99, -0.8, -0.6, 0.6, 0.8, 0.99), ..., use = "everything", method = "pearson", reversePalette = FALSE) {
 
   if (!is.null(mapping$colour)) {
     warning("mapping 'colour' will be ignored")
@@ -110,7 +110,7 @@ ggally_cor_color <- function(data, mapping, color = I("black"), size = 6, pallet
 
   colorN <- length(breaks)
   # pad the breaks so they are not extreme
-  corColors <- RColorBrewer::brewer.pal(n = colorN + 1, name = pallete)
+  corColors <- RColorBrewer::brewer.pal(n = colorN + 1, name = palette)
   if (identical(reversePalette, TRUE)) {
     corColors <- rev(corColors)
   }
