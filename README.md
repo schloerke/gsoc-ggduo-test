@@ -26,6 +26,6 @@ vignette("medium_test")
 # Hard Test
 vignette("hard_test")
 ```
-[Easy Link](https://schloerke.github.io/gsoc-ggduo-test/easy_test.html)
-[Medium Link](https://schloerke.github.io/gsoc-ggduo-test/medium_test.html)
-[Hard Link](https://schloerke.github.io/gsoc-ggduo-test/hard_test.html)
+* [Easy Link](https://schloerke.github.io/gsoc-ggduo-test/easy_test.html)
+* [Medium Link](https://schloerke.github.io/gsoc-ggduo-test/medium_test.html)
+* [Hard Link](https://schloerke.github.io/gsoc-ggduo-test/hard_test.html)
