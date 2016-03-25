@@ -5,7 +5,7 @@
 #' @param x legend object that has been grabbed from a ggplot2 object
 #' @param ... ignored
 #' @param plotNew boolean to determine if the `grid.newpage()` command and a new blank rectangle should be printed
-#' @importFrom ggplot2 ggplot_build ggplot_gtable
+#' @import ggplot2
 #' @export
 #' @examples
 #' library(ggplot2)
