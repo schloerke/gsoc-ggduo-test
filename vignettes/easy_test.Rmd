@@ -1,0 +1,27 @@
+---
+title: "Easy Test: example(GGally::ggpairs)"
+author: "Barret Schloerke"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{easy_test}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Test
+
+Easy: Install the GGally package from github (you might have to install the devtools package first). Run one of the examples, put the chart in a knitr/Rmarkdown document and write a paragraph to explain the chart.
+
+# GGally::ggpairs
+
+From the example of `ggpairs`:
+
+```{r fig.width=7, fig.height=7}
+library(GGally)
+data(tips, package = "reshape")
+pm <- ggpairs(tips[, 1:3])
+pm
+```
+
+The plot above is a generalized pairs plot that shows the pairwise relationship between all combinations of the variables: `total_bill`, `tip`, and `sex`.  `total_bill` and `tip` are continuous variables and display an average correlation. Their univariate densities are displayed in the first two diagonals. `sex` is a discrete variable.  In the bottom right corner, the bar chart of `sex` shows that there almost twice as many males as there are females.  There also appears to be a slightly higher `total_bill` and `tip` for males in the box-plots, but it can not easily be seen in the faceted-histograms in the bottom row.

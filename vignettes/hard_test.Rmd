@@ -1,0 +1,35 @@
+---
+title: "Hard Test: grab_legend"
+author: "Barret Schloerke"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{hard_test}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Test
+
+Hard: Make a function that prints the legend of a ggplot2 object. Display the results in a knitr/Rmarkdown document.
+
+# grab_legend
+
+This function builds the ggplot2 object, then filters out the legend.  Then it returns the gtable object containing the legend.  When it is ready to printed, the s3 print method will be invoked
+
+Example:
+```{r}
+library(ggplot2)
+library(GSoCggduoTest)
+
+histPlot <- qplot(x = Sepal.Length, data = iris, fill = Species, geom = "histogram", binwidth = 1/4)
+(right <- histPlot)
+(bottom <- histPlot + theme(legend.position = "bottom"))
+(top <- histPlot + theme(legend.position = "top"))
+(left <- histPlot + theme(legend.position = "left"))
+
+grab_legend(right)
+grab_legend(bottom)
+grab_legend(top)
+grab_legend(left)
+```

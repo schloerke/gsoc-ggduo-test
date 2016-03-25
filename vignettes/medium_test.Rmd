@@ -1,0 +1,68 @@
+---
+title: "Medium Test: color_cor"
+author: "Barret Schloerke"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{medium_test}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Test
+
+Medium: Make a new correlation plot that can be used in ggpairs. The plot function should change background color depending on the correlation value, the regular background and grid should be removed from the plot.
+
+
+# color_cor
+
+The `color_cor` plot function follows the ggpairs function API.  It also allows for different plot text colors, text size, correlation method, and color palette.  It warns the user if a color aesthetic was supplied and ignored.  A handful of tests have also been implemented in the package and are tested with travis on code push.
+
+Default color options using the 'RdYlGn' `RColorBrewer` palette.  This maps with green as positive correlation, red is negative correlation, and white/yellow is neutral
+```{r}
+library(GSoCggduoTest)
+color_cor(iris, ggplot2::aes(x = Sepal.Length, y = Petal.Width))
+
+# changing the color direction (so we see red)
+# use a different correlation method
+color_cor(
+  iris,
+  ggplot2::aes(x = Sepal.Length, y = -1 * Petal.Width),
+  method = "spearman"
+)
+```
+
+Using the color correlation function in `GGally::ggpairs`...
+```{r fig.width=7, fig.height=7}
+require(GGally)
+ggpairs(iris, 1:4, upper = list(continuous = color_cor))
+
+# use kendall correlation, only three color groups and reverse the palette
+ggpairs(
+  iris, 1:3,
+  title = "Reversed color!",
+  lower = "blank",
+  upper = list(
+    continuous = wrap(
+      color_cor,
+      method = "kendall",
+      breaks = 3,
+      reversePalette = TRUE
+    )
+  )
+)
+
+# use spearman correlation and only three color groups but breaking at abs(0.2)
+ggpairs(
+  iris, 1:3,
+  title = "Low break points",
+  lower = "blank",
+  upper = list(
+    continuous = wrap(
+      color_cor,
+      method = "spearman",
+      breaks = c(-0.20, 0.20)
+    )
+  )
+)
+```
