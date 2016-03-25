@@ -1,11 +1,11 @@
 
-context("ggally_cor_color")
+context("color_cor")
 
 
 test_that("color", {
 
   expect_warning(
-    ggally_cor_color(
+    color_cor(
       iris,
       aes(x = Sepal.Length, y = Petal.Width, color = Species)
     ),
@@ -15,7 +15,7 @@ test_that("color", {
 
 test_that("method", {
   lapply(c("pearson", "kendall", "spearman"), function(method) {
-    p <- ggally_cor_color(
+    p <- color_cor(
       iris,
       aes(x = Sepal.Length, y = Petal.Width),
       method = method
@@ -33,7 +33,7 @@ test_that("method", {
 test_that("breaks", {
 
   expect_error(
-    ggally_cor_color(
+    color_cor(
       iris,
       aes(x = Sepal.Length, y = Petal.Width),
       breaks = c(1 / 3, -1 / 3)
