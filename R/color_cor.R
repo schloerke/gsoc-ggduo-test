@@ -15,6 +15,7 @@
 #' @param use \code{use} supplied to cor function
 #' @param reversePalette boolean to determine if the palette should be reversed
 #' @author Barret Schloerke \email{schloerke@@gmail.com}
+#' @importFrom ggplot2 aes
 #' @importFrom stats cor.test
 #' @importFrom RColorBrewer brewer.pal
 #' @export
