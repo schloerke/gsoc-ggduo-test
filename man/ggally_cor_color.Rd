@@ -33,13 +33,38 @@ ggally_cor_color(data, mapping, color = I("black"), size = 6,
 Display the correlation of the given data and
 }
 \examples{
- ggally_cor_color(iris, ggplot2::aes(x = Sepal.Length, y = Petal.Width))
- ggally_cor_color(iris, ggplot2::aes(x = Sepal.Length, y = -1 * Petal.Width), method = "spearman")
+ggally_cor_color(iris, ggplot2::aes(x = Sepal.Length, y = Petal.Width))
+ggally_cor_color(
+  iris,
+  ggplot2::aes(x = Sepal.Length, y = -1 * Petal.Width),
+  method = "spearman"
+)
 
 require(GGally)
 ggpairs(iris, 1:4, upper = list(continuous = ggally_cor_color))
-ggpairs(iris, 1:4, upper = list(continuous = wrap(ggally_cor_color, method = "kendall", breaks = 3, reversePalette = TRUE))
-ggpairs(iris, 1:4, upper = list(continuous = wrap(ggally_cor_color, method = "spearman", breaks = c(-0.20, 0.20))))
+# use kendall correlation, only three color groups and reverse the pallete
+ggpairs(
+  iris, 1:4,
+  upper = list(
+    continuous = wrap(
+      ggally_cor_color,
+      method = "kendall",
+      breaks = 3,
+      reversePalette = TRUE
+    )
+  )
+)
+# use kendall correlation, only three color groups but breaking at abs(0.2)
+ggpairs(
+  iris, 1:4,
+  upper = list(
+    continuous = wrap(
+      ggally_cor_color,
+      method = "spearman",
+      breaks = c(-0.20, 0.20)
+    )
+  )
+)
 }
 \author{
 Barret Schloerke \email{schloerke@gmail.com}
