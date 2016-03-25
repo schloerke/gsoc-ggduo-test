@@ -1,0 +1,16 @@
+Package: GSoCggduoTest
+Title: Test package for GSoC 2016 for ggduo
+Version: 0.0.0.9000
+Authors@R: person("Barret", "Schloerke", email = "schloerke@gmail.com", role = c("aut", "cre"))
+Description: What the package does (one paragraph).
+Depends:
+    R (>= 3.2.3)
+Imports:
+  GGally (>= 1.0.1),
+  ggplot2 (>= 2.0.0),
+  RColorBrewer,
+  stats
+License: GPL (>= 2.0)
+LazyData: true
+RoxygenNote: 5.0.1
+Suggests: testthat
