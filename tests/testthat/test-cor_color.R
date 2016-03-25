@@ -1,6 +1,6 @@
 
 context("color_cor")
-
+library(ggplot2)
 
 test_that("color", {
 
@@ -11,6 +11,21 @@ test_that("color", {
     ),
     "mapping 'colour'"
   )
+
+  p <- color_cor(
+    iris,
+    aes(x = Sepal.Length, y = Petal.Width),
+    reversePalette = TRUE,
+  )
+  p2 <- color_cor(
+    iris,
+    aes(x = Sepal.Length, y = Petal.Width),
+    reversePalette = FALSE,
+  )
+  expect_true(
+    p$theme$panel.background$fill != p2$theme$panel.background$fill
+  )
+
 })
 
 test_that("method", {
@@ -54,9 +69,15 @@ test_that("breaks", {
   p2 <- color_cor(
     iris,
     aes(x = Sepal.Length, y = Petal.Width),
+    breaks = c(-1, -1 / 3, 1 / 3)
+  )
+  p3 <- color_cor(
+    iris,
+    aes(x = Sepal.Length, y = Petal.Width),
     breaks = 3
   )
   expect_equivalent(pGood$layers, p$layers)
   expect_equivalent(pGood$layers, p2$layers)
+  expect_equivalent(pGood$layers, p3$layers)
 
 })
