@@ -36,7 +36,7 @@ test_that("breaks", {
     ggally_cor_color(
       iris,
       aes(x = Sepal.Length, y = Petal.Width),
-      breaks = c(1/3, -1/3)
+      breaks = c(1 / 3, -1 / 3)
     ),
     "breaks are not ordered"
   )

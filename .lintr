@@ -1,0 +1,10 @@
+linters: with_defaults(
+    camel_case_linter = NULL,
+    NULL
+  )
+exclusions:
+  list(
+    "inst/doc/easy_test.R",
+    "inst/doc/medium_test.R",
+    "inst/doc/hard_test.R"
+  )

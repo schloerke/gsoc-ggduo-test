@@ -55,14 +55,24 @@
 #'     )
 #'   )
 #' )
-color_cor <- function(data, mapping, color = I("black"), size = 6, palette = "RdYlGn", breaks = c(-0.99, -0.8, -0.6, 0.6, 0.8, 0.99), ..., use = "everything", method = "pearson", reversePalette = FALSE) {
+color_cor <- function(
+  data, mapping,
+  color = I("black"),
+  size = 6,
+  palette = "RdYlGn",
+  breaks = c(-0.99, -0.8, -0.6, 0.6, 0.8, 0.99),
+  ...,
+  use = "everything",
+  method = "pearson",
+  reversePalette = FALSE
+) {
 
   if (!is.null(mapping$colour)) {
     warning("mapping 'colour' will be ignored")
   }
 
-  x = eval(mapping$x, data)
-  y = eval(mapping$y, data)
+  x <- eval(mapping$x, data)
+  y <- eval(mapping$y, data)
   corVal <- cor(
     x = x, y = y,
     use = use,
@@ -106,7 +116,7 @@ color_cor <- function(data, mapping, color = I("black"), size = 6, palette = "Rd
   }
 
   if (!all(order(breaks) == seq_along(breaks))) {
-    stop("breaks are not ordered. Please make them ordered from most negative to most positive")
+    stop("breaks are not ordered. Please order from negative to positive")
   }
 
   colorN <- length(breaks)
