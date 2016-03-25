@@ -41,4 +41,22 @@ test_that("breaks", {
     "breaks are not ordered"
   )
 
+  pGood <- color_cor(
+    iris,
+    aes(x = Sepal.Length, y = Petal.Width),
+    breaks = c(-1 / 3, 1 / 3)
+  )
+  p <- color_cor(
+    iris,
+    aes(x = Sepal.Length, y = Petal.Width),
+    breaks = c(-1 / 3, 1 / 3, 1)
+  )
+  p2 <- color_cor(
+    iris,
+    aes(x = Sepal.Length, y = Petal.Width),
+    breaks = 3
+  )
+  expect_equivalent(pGood$layers, p$layers)
+  expect_equivalent(pGood$layers, p2$layers)
+
 })
